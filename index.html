@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="parchment-board">
+
+        <header>
+            <h1>BANG! Karetní Hra</h1>
+            <nav>
+                <a href="#pravidla">Základní pravidla</a>
+                <a href="#role">Herní Role</a>
+                <a href="#postavy">Postavy</a>
+                <a href="#karty">Karty</a>
+                <a href="#strategie">Strategie</a>
+                <a href="#formular">Formulář</a>
+            </nav>
+        </header>
+
+        <p class="intro-text">Toto je BANG!, legendární karetní hra ze světa divokého západu o přestřelkách, blafování a
+            ničení přátelství.</p>
+
+        <section id="formular">
+            <h2>Formulář</h2>
+            <form action="">
+                <label for="name">Napiš své jméno:</label>
+                <input type="text" id="name" name="name" placeholder="Jméno">
+                <button type="submit">Odeslat</button>
+            </form>
+            <form action="">
+                <label for="email">Napiš svůj email:</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+                <button type="submit">Odeslat</button>
+            </form>
+            <form action="">
+                <label for="message">Napiš svou zprávu:</label>
+                <textarea id="message" name="message" placeholder="Zpráva"></textarea>
+                <button type="submit">Odeslat</button>
+            </form>
+        </section>
+
+        <section id="pravidla">
+            <h2>Základní pravidla</h2>
+
+            <h3>Příprava hry</h3>
+            <p>Každý hráč obdrží náhodnou kartu Role (kterou drží v tajnosti, s výjimkou Šerifa) a kartu
+                Postavy, která určuje jeho unikátní schopnost a počáteční počet životů (nábojů). Šerif si
+                svou kartu role ihned otočí lícem nahoru a navíc získává život navíc k limitu své postavy.
+            </p>
+
+            <h3>Průběh tahu hráče</h3>
+            <p>Hra probíhá po směru hodinových ručiček. Tah každého hráče se skládá ze 3 fází:</p>
+            <ol>
+                <li>Líznutí karet: Hráč si vezme 2 vrchní karty z dobíracího balíčku.</li>
+                <li>Zahrání karet: Hráč může vyložit libovolný počet karet, kterými pomáhá sobě nebo škodí
+                    ostatním. Platí však dvě klíčová omezení:
+                    <ul>
+                        <li>Lze zahrát pouze 1 kartu BANG! za tah (pokud postava nebo karta neurčuje
+                            jinak).</li>
+                        <li>Před hráčem nesmí ležet dvě karty se stejným názvem.</li>
+                    </ul>
+                </li>
+                <li>Odhození přebytečných karet: Na konci tahu nesmí mít hráč v ruce více karet, než kolik
+                    má právě zbývajících životů. Všechny karty navíc musí odhodit na odhazovací balíček.</li>
+            </ol>
+
+            <h3>Vzdálenost a dosah zbraní</h3>
+            <p>Vzdálenost mezi dvěma hráči odpovídá nejkratšímu počtu míst u stolu (sousedé jsou ve vzdálenosti 1). V
+                základu má každý hráč zbraň <em>Colt .45</em> s dostřelem 1. Vyložením lepší zbraně si hráč zvyšuje svůj
+                dosah. Karty jako <em>Mustang</em> vzdálenost od ostatních zvyšují, karty jako <em>Appaloosa</em> naopak
+                vzdálenost ke všem ostatním snižují.</p>
+
+            <h3>Eliminace a odměny / tresty</h3>
+            <ul>
+                <li>Zabití Bandity: Kdokoliv zabije Banditu (i jiný Bandita), ihned si lízne 3 karty z balíčku jako
+                    odměnu za vypsanou odměnu.</li>
+                <li>Zabití Pomocníka Šerifem: Pokud Šerif omylem zabije svého Pomocníka, za trest musí
+                    okamžitě odhodit všechny své karty z ruky i ze stolu!</li>
+            </ul>
+        </section>
+
+        <section id="role">
+            <h2>Herní Role</h2>
+            <p>Role určují cíl a způsob vítězství každého hráče. S výjimkou Šerifa nikdo nesmí svou roli odhalit!</p>
+
+            <div class="roles-grid">
+                <div class="role-box role-sheriff">
+                    <h3>Šerif (Sheriff)</h3>
+                    <span class="role-status">Veřejná role (ukazuje se všem)</span>
+                    <p>Cíl: Zlikvidovat všechny Bandity a Odpadlíka, a nastolit tak v městečku zákon a
+                        pořádek.</p>
+                    <p><em>Výhoda:</em> Hraje vždy jako první a má po celou dobu hry o 1 život více než udává jeho
+                        postava.
+                    </p>
+                </div>
+
+                <div class="role-box role-deputy">
+                    <h3>Pomocník šerifa (Deputy)</h3>
+                    <span class="role-status">Tajná role</span>
+                    <p>Cíl: Za každou cenu chránit Šerifa a pomoci mu eliminovat všechny Bandity i
+                        Odpadlíka.</p>
+                    <p><em>Specifikum:</em> Vítězí společně se Šerifem, a to i v případě, že během přestřelky sám padne.
+                    </p>
+                </div>
+
+                <div class="role-box role-outlaw">
+                    <h3>Bandita (Outlaw)</h3>
+                    <span class="role-status">Tajná role</span>
+                    <p>Cíl: Zastřelit Šerifa. Jakmile padne Šerif, Bandité okamžitě vyhrávají hru!</p>
+                    <p><em>Specifikum:</em> Bandité se navzájem neznají, ale mohou se dovtípit podle toho, po kom kdo
+                        střílí.</p>
+                </div>
+
+                <div class="role-box role-renegade">
+                    <h3>Odpadlík (Renegade)</h3>
+                    <span class="role-status">Tajná role</span>
+                    <p>Cíl: Zůstat naživu jako úplně poslední hráč u stolu.</p>
+                    <p><em>Specifikum:</em> Nejtěžší role. Musí nejprve udržovat Šerifa naživu proti Banditům a nakonec
+                        Šerifa porazit v závěrečném duelu 1 na 1. Pokud Šerif zemře dřív, vyhrávají Bandité!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="postavy">
+            <h2>Postavy (16 pistolníků ze základní hry)</h2>
+            <p>Každá postava má specifickou schopnost a stanovený počet životů (nábojů). Šerif si k tomuto počtu přičte
+                +1.
+            </p>
+
+            <div class="characters-list">
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Bart Cassidy</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Kdykoliv je zraněn a ztratí život, okamžitě si lízne 1 kartu z dobíracího balíčku.</p>
+                    </div>
+                    <img src="imgs/characters/BART_CASSIDY.webp" alt="Bart Cassidy" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Black Jack</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Ve fázi lízání ukáže druhou lízanou kartu všem. Je-li to srdce nebo káro, lízne si zdarma
+                            ještě
+                            třetí kartu.</p>
+                    </div>
+                    <img src="imgs/characters/BLACK_JACK.webp" alt="Black Jack" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Calamity Janet</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Může použít kartu <em>BANG!</em> jako <em>Vedle!</em> a kartu <em>Vedle!</em> jako
+                            <em>BANG!</em>.
+                        </p>
+                    </div>
+                    <img src="imgs/characters/CALAMITY_JANET.webp" alt="Calamity Janet" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>El Gringo</h4>
+                            <span class="hp-badge">3 ❤️</span>
+                        </div>
+                        <p>Kdykoliv je zraněn hráčem, vezme si náhodnou kartu přímo z ruky tohoto útočníka (za každý
+                            ztracený život 1 kartu).</p>
+                    </div>
+                    <img src="imgs/characters/EL_GRINGO.webp" alt="El Gringo" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Jesse Jones</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Ve fázi lízání si může první kartu líznout náhodně z ruky kteréhokoliv jiného hráče namísto z
+                            balíčku.</p>
+                    </div>
+                    <img src="imgs/characters/JESSE_JONES.webp" alt="Jesse Jones" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Jourdonnais</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Má vestavěnou schopnost Barelu: kdykoliv na něj někdo zahraje BANG!, může si "lízat" –
+                            padne-li
+                            srdce, střele se vyhnul.</p>
+                    </div>
+                    <img src="imgs/characters/JOURDONNAIS.webp" alt="Jourdonnais" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Kit Carlson</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Během fáze lízání se podívá na 3 vrchní karty balíčku, 2 si vybere do ruky a 1 vrátí lícem
+                            dolů
+                            zpět na balíček.</p>
+                    </div>
+                    <img src="imgs/characters/KIT_CARLSON.webp" alt="Kit Carlson" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Lucky Duke</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Kdykoliv si má "lízat" (např. při ověřování Barelu, Vězení nebo Dynamitu), otočí 2 karty a
+                            vybere si výsledek té, která mu vyhovuje.</p>
+                    </div>
+                    <img src="imgs/characters/LUCKY_DUKE.webp" alt="Lucky Duke" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Paul Regret</h4>
+                            <span class="hp-badge">3 ❤️</span>
+                        </div>
+                        <p>Má vestavěnou schopnost Mustanga: všichni ostatní hráči ho vidí na vzdálenost o 1 větší.</p>
+                    </div>
+                    <img src="imgs/characters/PAUL_REGRET.webp" alt="Paul Regret" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Pedro Ramirez</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Při lízání si může první kartu vzít přímo z vršku odhazovacího balíčku namísto z dobíracího.
+                        </p>
+                    </div>
+                    <img src="imgs/characters/PEDRO_RAMIREZ.webp" alt="Pedro Ramirez" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Rose Doolan</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Má vestavěnou schopnost Appaloosy: vidí všechny ostatní hráče na vzdálenost o 1 menší.</p>
+                    </div>
+                    <img src="imgs/characters/ROSE_DOOLAN.webp" alt="Rose Doolan" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Sid Ketchum</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Kdykoliv může odhodit 2 libovolné karty z ruky a okamžitě si tím vyléčit 1 život.</p>
+                    </div>
+                    <img src="imgs/characters/SID_KETCHUM.webp" alt="Sid Ketchum" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Slab the Killer</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>K odvrácení jeho karty <em>BANG!</em> musí napadený hráč zahrát současně dvě karty
+                            Vedle!.</p>
+                    </div>
+                    <img src="imgs/characters/SLAB_THE_KILLER.webp" alt="Slab the Killer" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Suzy Lafayette</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Jakmile nemá v ruce žádnou kartu, okamžitě si lízne 1 novou kartu z dobíracího balíčku.</p>
+                    </div>
+                    <img src="imgs/characters/SUZY_LAFAYETTE.webp" alt="Suzy Lafayette" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Vulture Sam</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Kdykoliv je vyřazen jakýkoliv hráč, Sam si vezme do ruky všechny karty z jeho ruky i vyložené
+                            před ním.</p>
+                    </div>
+                    <img src="imgs/characters/VULTURE_SAM.webp" alt="Vulture Sam" class="character-image">
+                </div>
+
+                <div class="character-item">
+                    <div class="char-info">
+                        <div class="char-top">
+                            <h4>Willy the Kid</h4>
+                            <span class="hp-badge">4 ❤️</span>
+                        </div>
+                        <p>Může během svého tahu zahrát libovolný počet karet BANG!.</p>
+                    </div>
+                    <img src="imgs/characters/WILLY_THE_KID.webp" alt="Willy the Kid" class="character-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="karty">
+            <h2>Herní Karty</h2>
+            <p>V základní hře je celkem 80 hracích karet rozdělených podle barvy rámečku.</p>
+
+            <h3>Hnědé karty (Okamžitý efekt)</h3>
+            <p>Zahrají se z ruky, ihned se vyhodnotí jejich účinek a odloží se na odhazovací balíček:</p>
+            <ul class="cards-detail-list">
+                <li>BANG! (25 ks): Základní útok na hráče v dostřelu. Hráč ztrácí život, pokud
+                    nezahraje
+                    <em>Vedle!</em>. Standardně max. 1 za tah.
+                </li>
+                <li>Vedle! / Missed! (12 ks): Okamžitě ruší účinek karty <em>BANG!</em> zahrané proti
+                    tobě.
+                </li>
+                <li>Pivo / Beer (6 ks): Vyléčí 1 ztracený život. Lze zahrát i mimo svůj tah v momentě,
+                    kdy
+                    dostaneš smrtící zásah. Nelze hrát, zbývají-li pouze 2 hráči.</li>
+                <li>Salón / Saloon (1 ks): Každý hráč u stolu si okamžitě vyléčí 1 život.</li>
+                <li>Panika! / Panic! (4 ks): Vezmi si 1 kartu (z ruky nebo ze stolu) od hráče na
+                    vzdálenost
+                    1.</li>
+                <li>Loupež / Cat Balou (4 ks): Donuť libovolného hráče (na jakoukoliv vzdálenost)
+                    odhodit 1
+                    kartu ze stolu nebo z ruky.</li>
+                <li>Dostavník / Stagecoach (2 ks): Okamžitě si lízni 2 karty z balíčku.</li>
+                <li>Wells Fargo (1 ks): Okamžitě si lízni 3 karty z balíčku.</li>
+                <li>Hokynářství / General Store (2 ks): Otočí se tolik karet, kolik je živých hráčů.
+                    Každý
+                    hráč si po směru hodinových ručiček vybere 1 kartu.</li>
+                <li>Indiáni! / Indians! (2 ks): Všichni ostatní hráči musí odhodit kartu
+                    <em>BANG!</em>,
+                    jinak ztrácejí 1 život.
+                </li>
+                <li>Kulomet / Gatling (1 ks): Útok na všechny ostatní hráče. Každý se musí bránit
+                    kartou
+                    <em>Vedle!</em>, jinak ztrácí život. Nepočítá se do limitu 1 BANG! za tah!
+                </li>
+                <li>Duel (3 ks): Vyzvi libovolného hráče na souboj. Hráči střídavě odhazují kartu
+                    <em>BANG!</em>. Kdo jako první nemůže odhodit BANG!, ztrácí život.
+                </li>
+            </ul>
+
+            <h3>Modré karty (Trvalé karty / Předměty)</h3>
+            <p>Vykládají se před hráče na stůl. Zůstávají ve hře a poskytují výhodu, dokud nejsou odstraněny (např.
+                kartou
+                <em>Panika!</em> nebo <em>Loupež</em>):
+            </p>
+            <ul class="cards-detail-list">
+                <li>Zbraně: Určují dostřel tvých útoků. Hráč může mít vyloženou vždy pouze
+                    jednu
+                    zbraň (nová nahrazuje starou):
+                    <ul>
+                        <li>Volcanic (2 ks): Dostřel 1, ale umožňuje zahrát neomezený počet
+                            karet
+                            BANG! za tah.</li>
+                        <li>Schofield (3 ks): Dostřel 2.</li>
+                        <li>Remington (1 ks): Dostřel 3.</li>
+                        <li>Rev. Carabine (1 ks): Dostřel 4.</li>
+                        <li>Winchester (1 ks): Dostřel 5.</li>
+                    </ul>
+                </li>
+                <li>Mustang (3 ks): Všichni ostatní tě vidí na vzdálenost o 1 větší.</li>
+                <li>Appaloosa (1 ks): Ty sám vidíš všechny ostatní hráče na vzdálenost o 1 menší.</li>
+                <li>Barel / Barrel (2 ks): Kdykoliv na tebe míří BANG!, otočíš vrchní kartu balíčku.
+                    Pokud
+                    je to srdce, vyhnul ses zásahu (jako karta Vedle!).</li>
+                <li>Vězení / Jail (3 ks): Lze zahrát na kteréhokoliv hráče (kromě Šerifa). Před svým
+                    tahem
+                    si vězeň "lízne" – padne-li srdce, utíká a hraje normálně. Jinak vynechává celý tah.</li>
+                <li>Dynamit / Dynamite (1 ks): Položí se před tebe. Na začátku tvého tahu otočíš kartu
+                    z
+                    balíčku: pokud padne Pika 2 až 9, dynamit bouchne za 3 životy!
+                    Pokud
+                    ne, posouvá se k sousedovi po levici.</li>
+            </ul>
+        </section>
+
+        <section id="strategie">
+            <h2>Strategie & Tipy ze hry</h2>
+            <p>Pár praktických rad, jak neprohrát v prvních třech kolech a jak efektivně využívat karty.</p>
+
+            <h3>Taktika podle rolí</h3>
+            <ul class="cards-detail-list">
+                <li><strong>Šerif:</strong> Nestřílej bezhlavě do lidí hned od začátku. Když omylem sundáš Pomocníka, zahazuješ celou ruku i karty ze stolu. Priorita je co nejdřív vyložit Barel nebo Mustanga a držet si obranu.</li>
+                <li><strong>Pomocník (Deputy):</strong> Šerif musí přežít za každou cenu. Neútoč zbytečně na neznámé hráče, hledej Bandity a chraň Šerifa. Když v přestřelce padneš, ale Šerif vyhraje, máš výhru taky.</li>
+                <li><strong>Bandita:</strong> Jděte po Šerifovi hned, než se stihne opevnit. Když vidíš, že tvůj spolu-bandita stejně nepřežije další kolo, doraz ho klidně sám a shrábni 3 karty odměny.</li>
+                <li><strong>Odpadlík (Renegade):</strong> Nejtěžší pozice ve hře. Ze začátku pomáhej Šerifovi, aby ho Bandité nesmázli moc brzy. Postupně likviduj ostatní a nech si Šerifa na závěrečný duel 1 na 1.</li>
+            </ul>
+
+            <h3>Tipy a triky s kartami</h3>
+            <ul class="cards-detail-list">
+                <li><strong>Volcanic a plná ruka BANGů:</strong> Nevykládej Volcanic na stůl zbytečně brzy, ať ti ho někdo nesebere Panikou. Počkej, až nasbíráš 3–4 karty BANG!, vylož ho a vystřílej cíl v jednom tahu.</li>
+                <li><strong>Kdy hrát Duel:</strong> Pošli Duel na hráče, který v předchozím tahu vyplácal BANGy na Indiány nebo má málo karet v ruce. Je skoro jistota, že ztratí život.</li>
+                <li><strong>Pivo v záloze:</strong> Pivo můžeš zahrát i mimo svůj tah jako záchranu před smrtící ránou na 0 životů. Nechávej si ho v ruce jako pojistku a nepij ho zbytečně, pokud nejsi nucen karty odhazovat.</li>
+                <li><strong>Dynamit a Lucky Duke:</strong> Lucky Duke si při ověřování líže 2 karty, takže je u něj šance na výbuch minimální. Pokud hraješ za něj, dynamit tě tolik neohrozí.</li>
+                <li><strong>Mustang + Barel:</strong> Nejoblíbenější defenzivní kombo. Zvyšuje vzdálenost od všech o 1 a Barel dává 25% šanci na bezplatné Vedle! z balíčku.</li>
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
